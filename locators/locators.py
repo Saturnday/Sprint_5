@@ -27,7 +27,7 @@ class Locators:
     LOG_OUT_BTN = (By.CSS_SELECTOR, "button.spanGlobal.btnSmall")   
 
     #Разместить объявления
-    CREATE_AD_BTN     = (By.XPATH, "/html/body/div/div/div[1]/div/button")
+    CREATE_AD_BTN     = (By.XPATH, "//button[text() = 'Разместить объявление']")
     LOGIN_MODAL_TITLE = (By.XPATH, "//div[contains(@class,'modal') or contains(@class,'popUp')]/h1")
 
     # Форма объявления
@@ -36,10 +36,10 @@ class Locators:
     PRICE_INPUT       = (By.NAME, "price")
 
     CATEGORY_DROPDOWN = ( By.XPATH, "//input[@name='category']/following-sibling::button" ) 
-    CATEGORY_OPTION = (By.XPATH, ".//div/div/div[2]/div/form/div[2]/div[2]/div[2]/button[2]") 
+    CATEGORY_OPTION = (By.XPATH, "//span[text() = 'Книги']") 
 
     CITY_DROPDOWN_BTN = (By.XPATH, "//input[@name='city']/following-sibling::button")
-    CITY_OPTION_SPB = (By.XPATH, "/html/body/div/div/div[2]/div/form/div[3]/div[2]/button[2]")
+    CITY_OPTION_SPB = (By.XPATH, "//span[text() = 'Санкт-Петербург']")
 
     CONDITION_USED = (By.XPATH, "//label[normalize-space()='Б/У']")
 
@@ -47,15 +47,17 @@ class Locators:
 
     # Профиль
     AVATAR_BTN = (By.CSS_SELECTOR, "button.circleSmall:has(svg.svgSmall)")
+    AVATAR_LINK = (By.XPATH, "//div[@class='App_app__GuJBs']" )
     MY_ADS_HEADER = (By.XPATH, "//h1[text()='Мои объявления']")
     AD_CARD       = (By.CSS_SELECTOR, "div.card")
     NEXT_PAGE_BTN = (By.XPATH, "//div[contains(@class,'pagination')]/button[last()]")
+    PROFILE_AD_TITLE = staticmethod(lambda text: (By.XPATH, f"//div[contains(@class,'card')]//h2[normalize-space()='{text}']"))
 
-    @staticmethod
-    def PROFILE_AD_TITLE(text):
-        return (By.XPATH, f"//*[self::h2 or self::h3 or self::div][normalize-space()='{text}']")
+    #Перехода по страницам объявления
+    FIRST_ADD = (By.XPATH, "//div[@class = 'description']")
+    PAGE_CURRENT = (By.CSS_SELECTOR, "div.card")
+    PAGE_NEW = (By.CSS_SELECTOR, "div.card")
     
-
 
 
     
